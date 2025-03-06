@@ -78,8 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
               return GestureDetector(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailScreen(movie: movie)),
-                ),  
+                  MaterialPageRoute(
+                      builder: (context) => DetailScreen(movie: movie)),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
