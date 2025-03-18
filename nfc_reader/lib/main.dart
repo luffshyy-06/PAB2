@@ -108,7 +108,10 @@ class _NFCReaderScreenState extends State<NFCReaderScreen> {
               ),
               child: Text(
                 _statusText,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
             ),
             SizedBox(height: 20),
@@ -144,10 +147,9 @@ class _NFCReaderScreenState extends State<NFCReaderScreen> {
                     String entry = _nfcIds[index];
                     List<String> parts = entry.split(' - NFC ID: ');
                     String timeStamp = parts[0];
-                    String nfcId =
-                        parts.length > 1
-                            ? parts[1]
-                            : "Tidak dapat membaca ID NFC";
+                    String nfcId = parts.length > 1
+                        ? parts[1]
+                        : "Tidak dapat membaca ID NFC";
 
                     return Card(
                       elevation: 3,
@@ -182,24 +184,42 @@ class _NFCReaderScreenState extends State<NFCReaderScreen> {
                 ElevatedButton(
                   onPressed: _startNFCScan,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 15,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: Text("Mulai Scan", style: TextStyle(fontSize: 16, color: Colors.blue)),
+                  child: Text(
+                    "Mulai Scan",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.blue,
+                    ),
+                  ),
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: _stopNFCScan,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 15,
+                    ),
                     backgroundColor: Colors.redAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: Text("Stop Scan", style: TextStyle(fontSize: 16, color: Colors.white)),
+                  child: Text(
+                    "Stop Scan",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),
