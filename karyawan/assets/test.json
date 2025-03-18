@@ -1,0 +1,29 @@
+[
+    {
+      "id": "1",
+      "title": "Flutter IoT",
+      "details": {
+        "description": "A blog about IoT with Flutter",
+        "tags": ["flutter", "iot", "technology"],
+        "author": {
+          "name": "John Doe",
+          "email": "john@example.com"
+        },
+        "releaseDate": ["2025-01-01", "2025-12-31"]
+      }
+    },
+    {
+      "id": "2",
+      "title": "AI in Healthcare",
+      "details": {
+        "description": "The role of AI in modern healthcare",
+        "tags": ["AI", "healthcare", "technology"],
+        "author": {
+          "name": "Jane Smith",
+          "email": "jane@example.com"
+        },
+        "releaseDate": ["2024-06-15", "2024-12-20"]
+      }
+    }
+]
+  

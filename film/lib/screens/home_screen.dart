@@ -1,6 +1,7 @@
-import 'package:film/services/api_services.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/movie.dart';
+import '../services/api_services.dart';
 import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,9 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Filem'),
-      ),
+      appBar: AppBar(title: const Text('Filem')),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -76,31 +75,40 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (BuildContext context, int index) {
               final Movie movie = movies[index];
               return GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DetailScreen(movie: movie)),
-                ),
+                onTap:
+                    () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(movie: movie),
+                      ),
+                    ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Image.network(
-                        'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                      CachedNetworkImage(
+                        imageUrl:
+                            'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                         width: 150,
                         height: 150,
                         fit: BoxFit.cover,
+                        placeholder: (context, url) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.blue,
+                            ),
+                          );
+                        },
+                        errorWidget: (context, url, error) {
+                          return Icon(Icons.error);
+                        },
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      const SizedBox(height: 5),
                       Text(
                         movie.title.length > 14
                             ? '${movie.title.substring(0, 10)}...'
                             : movie.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
