@@ -10,23 +10,31 @@ class ShoppingListScreen extends StatefulWidget {
 
 class _ShoppingListScreenState extends State<ShoppingListScreen> {
   final TextEditingController _controller = TextEditingController();
-  final ShoppingService _shoppingService = ShoppingService();
+  final ShoppingServices _shoppingService = ShoppingServices();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Shopping List")),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Row(
+      appBar: AppBar(title: const Text('Daftar Belanja')),
+      body: Column(
+        children: [
+          // Input Field dan Tombol Tambah
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
               children: [
                 Expanded(
                   child: TextField(
                     controller: _controller,
-                    decoration:
-                        const InputDecoration(hintText: 'Enter item name'),
+                    decoration: const InputDecoration(
+                      hintText: 'Masukkan nama barang',
+                    ),
                   ),
                 ),
                 IconButton(
@@ -40,42 +48,44 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: StreamBuilder<Map<String, String>>(
-                stream: _shoppingService.getShoppingList(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return Center(child: Text("Error: ${snapshot.error}"));
-                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return const Center(child: Text("No items in the list"));
-                  }
+          ),
+          // Daftar Belanja dengan StreamBuilder
+          Expanded(
+            child: StreamBuilder<Map<String, String>>(
+              stream: _shoppingService.getShoppingList(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text("Error: ${snapshot.error}"));
+                }
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(child: Text("Belum ada item"));
+                }
 
-                  Map<String, String> items = snapshot.data!;
-                  return ListView.builder(
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      final key = items.keys.elementAt(index);
-                      final item = items[key];
+                final items = snapshot.data!;
+                return ListView.builder(
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    final key = items.keys.elementAt(index);
+                    final item = items[key];
 
-                      return ListTile(
-                        title: Text(item!),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () {
-                            _shoppingService.removeShoppingItem(key);
-                          },
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
+                    return ListTile(
+                      title: Text(item!),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          _shoppingService.removeShoppingItem(key);
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

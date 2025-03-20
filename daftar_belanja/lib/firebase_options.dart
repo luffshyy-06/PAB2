@@ -46,6 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '866415355234',
     projectId: 'first-app-66422',
     authDomain: 'first-app-66422.firebaseapp.com',
+    databaseURL: 'https://first-app-66422-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'first-app-66422.firebasestorage.app',
     measurementId: 'G-SP9LEBMXJ4',
   );
@@ -55,6 +56,7 @@ class DefaultFirebaseOptions {
     appId: '1:866415355234:android:c8e88dbc1b8557087d383b',
     messagingSenderId: '866415355234',
     projectId: 'first-app-66422',
+    databaseURL: 'https://first-app-66422-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'first-app-66422.firebasestorage.app',
   );
 
@@ -63,6 +65,7 @@ class DefaultFirebaseOptions {
     appId: '1:866415355234:ios:3393e369fa1c3b6c7d383b',
     messagingSenderId: '866415355234',
     projectId: 'first-app-66422',
+    databaseURL: 'https://first-app-66422-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'first-app-66422.firebasestorage.app',
     iosBundleId: 'com.example.daftarBelanja',
   );
@@ -72,6 +75,7 @@ class DefaultFirebaseOptions {
     appId: '1:866415355234:ios:3393e369fa1c3b6c7d383b',
     messagingSenderId: '866415355234',
     projectId: 'first-app-66422',
+    databaseURL: 'https://first-app-66422-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'first-app-66422.firebasestorage.app',
     iosBundleId: 'com.example.daftarBelanja',
   );
@@ -82,7 +86,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '866415355234',
     projectId: 'first-app-66422',
     authDomain: 'first-app-66422.firebaseapp.com',
+    databaseURL: 'https://first-app-66422-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'first-app-66422.firebasestorage.app',
     measurementId: 'G-BWNJC2TWS8',
   );
+
 }

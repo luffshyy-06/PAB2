@@ -12,3 +12,17 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Obfuscation related
+app.*.map.json
+
+# Android Stidop will place build artifacts here
+/android/app/build
+/android/app/profile
+/android/app/release
+
+# Firebase config related
+/android/app/google-services.json
+/ios/firebase_app_id_file.json
+/macos/firebase_app_id_file.json
+/lib/firebase_options.dart
