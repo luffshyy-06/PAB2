@@ -90,5 +90,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'first-app-66422.firebasestorage.app',
     measurementId: 'G-BWNJC2TWS8',
   );
-
 }
